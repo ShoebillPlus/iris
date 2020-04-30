@@ -1,0 +1,62 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: authentication-server
+          uri: lb://authentication-server:7779
+          predicates:
+            - Path=/authentication-server/**
+          filters:
+            - StripPrefix=1
+            - PreserveHostHeader
+        - id: auth
+          uri: lb://authorization-server:7778
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - PreserveHostHeader
+        - id: upms
+          uri: lb://upms:7772
+          predicates:
+            - Path=/upms/**
+          filters:
+            - StripPrefix=1
+        - id: bgmt
+          uri: lb://bgmt
+          predicates:
+            - Path=/bgmt/**
+          filters:
+            - StripPrefix=1
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+#网关白名单，无需要签权url
+gate:
+  ignore:
+    authentication:
+      startWith: /auth,/oauth,/open,/v2/api-docs,/swagger-ui.html
+hc:
+  swagger-agg:
+    generate-routes: user,file
+  gateway:
+    #网关动态路由
+    dynamicRoute:
+      enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

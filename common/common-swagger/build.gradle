@@ -1,0 +1,23 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+apply plugin: 'io.spring.dependency-management'
+group 'com.hc'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+ext {
+    set('springCloudVersion', 'Greenwich.RELEASE')
+}
+dependencies {
+    compile ref4Swagger2
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.1.5.RELEASE'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

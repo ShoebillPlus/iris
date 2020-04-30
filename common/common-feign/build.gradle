@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+}
+apply plugin: 'io.spring.dependency-management'
+group 'com.hc.demo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+ext {
+    set('springCloudVersion', 'Greenwich.RELEASE')
+}
+configurations {
+    all*.exclude group: 'org.springframework.security.oauth.boot', module: 'spring-security-oauth2-autoconfigure'
+}
+dependencies {
+    compile "org.springframework.boot:spring-boot-configuration-processor:2.1.5.RELEASE"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version:'2.2.1.RELEASE'
+    compile project(':common:common-core')
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

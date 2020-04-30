@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+}
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+apply plugin: 'maven'
+group = 'com.hc.auth.client'
+version = '0.0.1-RELEASE'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven{
+        //更换为阿里的仓库
+        url  'http://maven.aliyun.com/nexus/content/groups/public'
+    }
+    //有些jar包在中央仓库是没有的，需要手动添加上去
+//        flatDir {  dirs 'local_jars' }
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', 'Greenwich.RELEASE')
+}
+
+configurations {
+    all*.exclude group: 'org.springframework.security.oauth.boot', module: 'spring-security-oauth2-autoconfigure'
+}
+dependencies {
+    //compile project(':common:common-security')
+    // compile ref4SpringCloud
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.1.0.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-security', version: '2.2.1.RELEASE'
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    compile group: 'io.github.openfeign', name: 'feign-okhttp', version: '10.6.0'
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://192.168.2.131:8081/nexus/repository/hc/") {
+                authentication(userName: "admin", password: "tzwy@123456")
+            }
+        }
+    }
+}
+//参见Part 2， 为项目生成**.jar/**-javadoc.jar/**-sources.jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}

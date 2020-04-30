@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:7772}
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  datasource:
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:3306}/iris?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=UTC
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:111111}
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    org.springframework.security: debug
+  config: classpath:logback-spring.xml

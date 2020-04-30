@@ -1,0 +1,26 @@
+rootProject.name = 'iris'
+include ':auth'
+include ':auth:authentication-client'
+include ':auth:authorization-server'
+include ':auth:authentication-server'
+include ':gateway'
+include ':upms'
+include ':bgmt'
+include ':common'
+include ':common:common-core'
+include ':common:common-swagger'
+include ':common:common-feign'
+include ':common:common-security'
+project(':auth').projectDir = "$rootDir/auth" as File
+project(':auth:authentication-client').projectDir = "$rootDir/auth/authentication-client" as File
+project(':auth:authorization-server').projectDir = "$rootDir/auth/authorization-server" as File
+project(':auth:authentication-server').projectDir = "$rootDir/auth/authentication-server" as File
+project(':gateway').projectDir = "$rootDir/gateway" as File
+project(':upms').projectDir = "$rootDir/upms" as File
+project(':bgmt').projectDir = "$rootDir/bgmt" as File
+project(':common').projectDir = "$rootDir/common" as File
+project(':common:common-core').projectDir = "$rootDir/common/common-core" as File
+project(':common:common-swagger').projectDir = "$rootDir/common/common-swagger" as File
+project(':common:common-feign').projectDir = "$rootDir/common/common-feign" as File
+project(':common:common-security').projectDir = "$rootDir/common/common-security" as File
+

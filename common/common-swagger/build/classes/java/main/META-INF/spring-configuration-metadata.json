@@ -1,0 +1,142 @@
+{
+  "groups": [
+    {
+      "name": "com.hc.gateway.swagger",
+      "type": "com.hc.common.swagger.config.SwaggerProperties",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    },
+    {
+      "name": "com.hc.gateway.swagger.authorization",
+      "type": "com.hc.common.swagger.config.SwaggerProperties$Authorization",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    },
+    {
+      "name": "com.hc.gateway.swagger.contact",
+      "type": "com.hc.common.swagger.config.SwaggerProperties$Contact",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "com.hc.gateway.swagger.authorization.auth-regex",
+      "type": "java.lang.String",
+      "description": "需要开启鉴权URL的正则",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Authorization",
+      "defaultValue": "^.*$"
+    },
+    {
+      "name": "com.hc.gateway.swagger.authorization.authorization-scope-list",
+      "type": "java.util.List<com.hc.common.swagger.config.SwaggerProperties$AuthorizationScope>",
+      "description": "鉴权作用域列表",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Authorization"
+    },
+    {
+      "name": "com.hc.gateway.swagger.authorization.name",
+      "type": "java.lang.String",
+      "description": "鉴权策略ID，需要和SecurityReferences ID保持一致",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Authorization",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.authorization.token-url-list",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Authorization"
+    },
+    {
+      "name": "com.hc.gateway.swagger.base-package",
+      "type": "java.lang.String",
+      "description": "swagger会解析的包路径",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.base-path",
+      "type": "java.util.List<java.lang.String>",
+      "description": "swagger会解析的url规则",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    },
+    {
+      "name": "com.hc.gateway.swagger.contact.email",
+      "type": "java.lang.String",
+      "description": "联系人email",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Contact",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.contact.name",
+      "type": "java.lang.String",
+      "description": "联系人",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Contact",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.contact.url",
+      "type": "java.lang.String",
+      "description": "联系人url",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties$Contact",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.description",
+      "type": "java.lang.String",
+      "description": "描述",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启swagger",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    },
+    {
+      "name": "com.hc.gateway.swagger.exclude-path",
+      "type": "java.util.List<java.lang.String>",
+      "description": "在basePath基础上需要排除的url规则",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties"
+    },
+    {
+      "name": "com.hc.gateway.swagger.host",
+      "type": "java.lang.String",
+      "description": "host信息",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.license",
+      "type": "java.lang.String",
+      "description": "许可证",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.license-url",
+      "type": "java.lang.String",
+      "description": "许可证URL",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.terms-of-service-url",
+      "type": "java.lang.String",
+      "description": "服务条款URL",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.title",
+      "type": "java.lang.String",
+      "description": "标题",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "com.hc.gateway.swagger.version",
+      "type": "java.lang.String",
+      "description": "版本",
+      "sourceType": "com.hc.common.swagger.config.SwaggerProperties",
+      "defaultValue": ""
+    }
+  ],
+  "hints": []
+}

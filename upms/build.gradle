@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.5.RELEASE'
+    }
+    repositories {
+        maven {
+            url  'http://maven.aliyun.com/nexus/content/groups/public'
+            //url "http://192.168.3.163:8081/nexus/content/groups/public/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.hc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url  'http://maven.aliyun.com/nexus/content/groups/public'
+        //url "http://192.168.2.131:8081/nexus/repository/hc/"
+    }
+}
+
+ext {
+    springCloudVersion = 'Greenwich.RELEASE'
+}
+dependencies {
+    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version:'2.1.1.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version:'2.2.1.RELEASE'
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.3.1'
+    compile group: 'com.baomidou', name: 'mybatis-plus-generator', version: '3.3.1'
+    compile ref4Druid
+    compile ref4MysqlConnector
+    compile ref4SpringData
+    compile project(':common:common-core')
+    //compile group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.1.5.RELEASE'
+    compile ('tk.mybatis:mapper-spring-boot-starter:2.0.1')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+bootJar{
+    archiveName 'bgmt.jar'
+}
